@@ -19,3 +19,28 @@ function convertString($a,$b)
     }
 }
 
+function mySortForKey($a, $b)
+{
+    if (!is_array($a) || !is_string($b)) {
+        echo 'ne vernie uslovia';
+        exit();
+    } else {
+        $arr = [];
+        for ($i = 0; $i < count($a); $i++) {
+            if (!in_array($a[$i][$b], $a[$i])){
+                throw new Exception( "V massive s indexom '$i' net klucha '$b'" );
+            }
+            $arr[] = $a[$i][$b];
+        }
+        array_multisort($arr, SORT_NUMERIC, SORT_ASC);
+        return $arr;
+    }
+}
+
+/*
+try {
+    print_r(mySortForKey([['a'=>2,'b'=>1],['a'=>1,'b'=>3],['b'=>2]], 'a'));
+} catch (Exception $e) {
+    echo 'Vibrosheno iskluchenie: ',  $e->getMessage(), "\n";
+} 
+*/
