@@ -44,3 +44,19 @@ try {
     echo 'Vibrosheno iskluchenie: ',  $e->getMessage(), "\n";
 } 
 */
+
+define ('HOST', 'localhost');
+define ('USER', 'root');
+define ('PASS', 'password');
+define ('DB', 'test_samson');
+
+function importXml($a)
+{
+    $CONNECT = mysqli_connect(HOST, USER, PASS, DB);
+    if (mysqli_connect_errno()) {
+	printf("Соединение не удалось: %s\n", mysqli_connect_error());
+        exit();
+    }
+    
+}
+
